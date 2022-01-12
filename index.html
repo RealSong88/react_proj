@@ -10,11 +10,11 @@
     const root = document.getElementById("root");
     const h3 = React.createElement("h3", {
         id: "title",
-        onmouseover: () => console.log("mouse over!!"),
+        onMouseOver: () => console.log("mouse over!!"),
     }, "Hello I'm a h3");
     const btn = React.createElement("button", {
         id: "btn",
-        onclick:() => console.log("I'm clicked"),
+        onClick:() => console.log("I'm clicked"),
     }, "Click me");
     const container = React.createElement("div", null, [h3, btn]);
     ReactDOM.render(container, root);
