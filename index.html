@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
     <div id="root"></div>
-</body>
-<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js
 "></script>
-<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-<script type="text/babel" >
+  <script type="text/babel">
     const root = document.getElementById("root");
-    const Button = () => <button style={{backgroundColor: "tomato"}} onClick={() => console.log("I'm clicked")}>Click me</button>
-    
-    const Container = () => (
+    let counter = 0;
+    function countUp() {
+      counter = counter + 1;
+      render();
+    }
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+    function Container() {
+      return (
         <div>
-            <h3>Total clicks: 0 </h3>
-            <button>Click me</button>
+          <h3>Total clicks: {counter} </h3>
+          <button onClick={countUp}>Click me</button>
         </div>
-    );
-    ReactDOM.render(<Container />, root);
-</script>
+        
+      );
+    }
+    render();
+  </script>
 </html>
