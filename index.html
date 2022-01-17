@@ -10,14 +10,17 @@
 
 <script type="text/babel" >
     const root = document.getElementById("root");
-    const Button = () => <button style={{backgroundColor: "tomato"}} onClick={() => console.log("I'm clicked")}>Click me</button>
-    
-    const Container = () => (
+    function App() {
+        const [counter, modifier] = React.useState(11);
+        
+        console.log(counter);
+        return (
         <div>
             <h3>Total clicks: 0 </h3>
             <button>Click me</button>
         </div>
-    );
-    ReactDOM.render(<Container />, root);
+        );
+    }
+    ReactDOM.render(<App />, root);
 </script>
 </html>
