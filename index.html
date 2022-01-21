@@ -23,7 +23,6 @@
         reset();
         setInverted(current => !current);
       };
-      console.log(counter);
       return (
         <div>
           <div>
@@ -55,11 +54,56 @@
     }
 
     function KmToMiles() {
-      return <h2> Km 2m</h2>;
+      /* 1miles = 1.61km */
+      let style = {
+        textAlign: 'right',
+      };
+      const [amount, setAmount] = React.useState(0);
+      const [invert, setInverted] = React.useState(false);
+      const onChange = e => {
+        setAmount(e.target.value);
+      };
+      const reset = () => {
+        setAmount(0);
+      };
+      const onInvert = () => {
+        reset();
+        setInverted(current => !current);
+      };
+      return (
+        <div>
+          <div>
+            <input
+              type="number"
+              id="km"
+              placeholder="km"
+              style={style}
+              onChange={onChange}
+              value={invert ? amount * 1.16 : amount}
+              disabled={invert}
+            ></input>
+            <label htmlFor="km">Km</label>
+          </div>
+          <div>
+            <input
+              type="number"
+              id="miles"
+              placeholder="miles"
+              style={style}
+              onChange={onChange}
+              value={invert ? amount : amount * 0.86}
+              disabled={!invert}
+            ></input>
+            <label htmlFor="miles">Miles</label>
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onInvert}>Change</button>
+        </div>
+      );
     }
 
     function App() {
-      const [index, setIndex] = React.useState('xx');
+      const [index, setIndex] = React.useState('1');
       const onChange = e => {
         setIndex(e.target.value);
       };
@@ -72,7 +116,7 @@
             <option value="1">Km & Miles</option>
           </select>
           <hr />
-          {index === 'xx' ? "Hello yeah!" : null}
+          {index === 'xx' ? 'Hello yeah!' : null}
           {index === '0' ? <MinutesToHours /> : null}
           {index === '1' ? <KmToMiles /> : null}
         </div>
