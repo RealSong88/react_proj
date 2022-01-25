@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js
+"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const root = document.getElementById('root');
+    
+    function Car() {
+      const [car, setCar] = React.useState({
+        brand: 'Ford',
+        model: 'Mustang',
+        year: '1964',
+        color: 'red',
+      });
+
+      const updateColor = () => {
+        debugger;
+        setCar(previousState => {
+          console.log(previousState);
+          return { ...previousState, color: 'blue' };
+        });
+      };
+
+      return (
+        <>
+          <h1>My {car.brand}</h1>
+          <p>
+            It is a {car.color} {car.model} from {car.year}.
+          </p>
+          <button type="button" onClick={updateColor}>
+            Blue
+          </button>
+        </>
+      );
+    }
+
+    ReactDOM.render(<Car />, document.getElementById('root'));
+  </script>
+</html>
